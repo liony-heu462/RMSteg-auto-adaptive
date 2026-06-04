@@ -158,20 +158,9 @@ python evaluate.py
 
 ---
 
-## 9. 环境要求
 
-```
-Python &gt;= 3.8
-PyTorch &gt;= 1.8
-torchvision
-numpy
-PIL
-lpips (可选)
-```
 
----
-
-## 10. 引用
+## 9. 引用
 
 ```
 @inproceedings{rmsteg2025,
@@ -184,7 +173,7 @@ lpips (可选)
 
 ---
 
-## 11. 项目完成状态
+## 10. 项目完成状态
 
  **代码**：两套完整体系（src 原始 + auto 自适应）
  **文档**：所有文档均为正规报告格式
