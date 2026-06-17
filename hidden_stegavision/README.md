@@ -1,20 +1,28 @@
 
-# Hidden Stego 项目
+# Hidden StegoVision 项目
 
 本项目包含两种经典的图像隐写算法实现：HiDDeN 和 StegaVision。
 
 ## 项目结构
 
 ```
-hidden_stego/
+hidden_stegavision/
 ├── HiDDeN/
 │   ├── model.py          # HiDDeN 模型实现
-│   ├── test.py           # HiDDeN 测试脚本
+│   ├── test.py           # HiDDeN 批量测试脚本
+│   ├── util/             # 工具函数（从 src 复制）
+│   ├── config.yaml       # 配置文件
 │   └── result/           # 结果保存目录
 ├── StegaVision/
 │   ├── model.py          # StegaVision 模型实现
-│   ├── test.py           # StegaVision 测试脚本
+│   ├── test.py           # StegaVision 批量测试脚本
+│   ├── util/             # 工具函数（从 src 复制）
+│   ├── config.yaml       # 配置文件
 │   └── result/           # 结果保存目录
+├── test_img/             # 测试图片文件夹
+│   ├── 0.png
+│   ├── 1.png
+│   └── ...
 └── README.md             # 本文件
 ```
 
@@ -64,6 +72,15 @@ cd StegaVision
 python test.py
 ```
 
+## 批量测试说明
+
+两种算法的测试脚本都会自动处理 `test_img/` 文件夹中的所有图片：
+
+- 支持的图片格式：`.png`, `.jpg`, `.jpeg`, `.bmp`
+- 结果保存在各自的 `result/` 文件夹中
+- 结果文件命名格式：`{图片名称}_{类型}.png`
+  - 例如：`0_host.png`, `0_steg.png`, `0_decode_qr.png`
+
 ## 依赖
 
 - PyTorch
@@ -76,9 +93,11 @@ python test.py
 
 ## 测试图片
 
-使用 `../../src/test_img/0.png` 作为测试图片。
+将测试图片放置在 `test_img/` 文件夹中，测试脚本会自动识别并处理。
 
 ## 注意事项
 
-两种算法均直接实现其固有缺陷，未进行改进。
+- 两种算法均直接实现其固有缺陷，未进行改进
+- 测试脚本会遍历 test_img 文件夹中的所有图片
+- 结果文件会以图片名称为前缀保存，便于区分
 

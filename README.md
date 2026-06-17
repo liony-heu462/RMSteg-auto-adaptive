@@ -20,12 +20,13 @@
 
 本报告包含完整的 RMSteg 基线模型复现和自适应分辨率改进。
 
-### 1.1 两套完整体系
+### 1.1 三套完整体系
 
 | 文件夹 | 功能 |
 |------|------|
 | `src/` | 原始 RMSteg：固定 224×224 输入 |
 | `auto_224model/` | 自适应 RMSteg：支持任意分辨率 |
+| `hidden_stegavision/` | 经典隐写算法对比：HiDDeN 和 StegaVision |
 
 ### 1.2 核心改进
 
@@ -53,7 +54,7 @@
 ## 3. 项目结构
 
 ```
-RMSteg-main/
+RMSteg-auto-adaptive/
 ├── src/
 │   ├── model/
 │   ├── util/
@@ -82,6 +83,22 @@ RMSteg-main/
 │   ├── 使用说明.md
 │   └── 性能分析报告.md
 │
+├── hidden_stegavision/
+│   ├── HiDDeN/
+│   │   ├── model.py          # HiDDeN 模型实现
+│   │   ├── test.py           # HiDDeN 批量测试脚本
+│   │   ├── util/             # 工具函数
+│   │   ├── config.yaml       # 配置文件
+│   │   └── result/           # 结果保存目录
+│   ├── StegaVision/
+│   │   ├── model.py          # StegaVision 模型实现
+│   │   ├── test.py           # StegaVision 批量测试脚本
+│   │   ├── util/             # 工具函数
+│   │   ├── config.yaml       # 配置文件
+│   │   └── result/           # 结果保存目录
+│   ├── test_img/             # 测试图片文件夹
+│   └── README.md             # 详细说明文档
+│
 └── README.md  # 本文档
 ```
 
@@ -106,6 +123,20 @@ python final_test.py
 python all_test.py
 python evaluate.py
 ```
+
+### 4.3 使用经典隐写算法对比
+
+```bash
+# 测试 HiDDeN
+cd hidden_stegavision/HiDDeN
+python test.py
+
+# 测试 StegaVision
+cd hidden_stegavision/StegaVision
+python test.py
+```
+
+注意：HiDDeN 和 StegaVision 会自动处理 `hidden_stegavision/test_img/` 文件夹中的所有图片。
 
 ---
 
@@ -158,11 +189,6 @@ python evaluate.py
 
 ---
 
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 81accffb2eb37090aba07e25b6e90d9fdd3b00a4
 ## 9. 引用
 
 ```
@@ -178,10 +204,16 @@ python evaluate.py
 
 ## 10. 项目完成状态
 
- **代码**：两套完整体系（src 原始 + auto 自适应）
+ **代码**：三套完整体系
+  - src 原始：固定 224×224 输入
+  - auto_224model 自适应：支持任意分辨率
+  - hidden_stegavision 对比：HiDDeN 和 StegaVision
  **文档**：所有文档均为正规报告格式
- **改进**：图像金字塔算法，完全符合课程作业要求
+ **改进**：
+  - 图像金字塔算法，完全符合课程作业要求
+  - 新增经典隐写算法对比
  **工具**：评估、训练、检测等完整脚本
+ **测试**：支持批量处理 test_img 文件夹中的所有图片
 
 ---
 
