@@ -21,7 +21,7 @@ if __name__ == '__main__':
     net.load_state_dict((torch.load('./pretrained/rmsteg.pth')))
     net = net.to(device)
 
-    host_image = util.image_to_tensor('./test_img/test5.png').to(device)
+    host_image = util.image_to_tensor('./test_img/0.png').to(device)
     host_image = transforms.Resize((img_size, img_size))(host_image)
     
     # generate and save qr code
